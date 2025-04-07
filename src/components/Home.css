@@ -1,0 +1,13 @@
+.home-hero {
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 2px;
+  }
+  
+  @media (max-width: 768px) {
+    .home-hero h1,
+    .home-hero h2 {
+      font-size: 2rem;
+    }
+  }
+  

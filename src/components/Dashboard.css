@@ -1,0 +1,46 @@
+/* Dashboard.css */
+
+/* Logo styling */
+.logo {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  /* Layout content background */
+  .ant-layout-content {
+    background-color: #fafafa;
+    min-height: 280px;
+  }
+  
+  /* Menu item hover effect */
+  .ant-menu-item:hover {
+    background-color: rgba(106, 13, 173, 0.1) !important; /* Soft purple hover */
+    color: white !important;
+  }
+  
+  /* Button focus and active states (remove blue effect) */
+  button:focus,
+  button:active,
+  .btn:focus,
+  .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: #6a0dad !important; /* Purple */
+    color: white !important;
+    border-color: #6a0dad !important;
+  }
+  
+  /* Button hover state */
+  button:hover,
+  .btn:hover {
+    background-color: rgba(106, 13, 173, 0.85) !important; /* Transparent purple */
+    color: white !important;
+    border-color: #6a0dad !important;
+  }
+  
+  /* Optional: Menu item selected (active) state */
+  .ant-menu-item-selected {
+    background-color: #6a0dad !important;
+    color: white !important;
+  }
+  

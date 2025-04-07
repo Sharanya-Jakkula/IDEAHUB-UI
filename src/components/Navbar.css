@@ -1,0 +1,43 @@
+.text-purple {
+    /* color: #6f42c1 !important; */
+    color:#6f42c1;
+  }
+
+  .btn-purple {
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-purple:hover {
+    background-color: #5a32a3;
+    color: white;
+  }
+  
+  .nav-hover {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-hover::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    background-color: #6f42c1;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  .nav-hover:hover::after {
+    width: 100%;
+  }
+  
+  .nav-hover:hover {
+    color: #5a32a3 !important;
+  }
+  
