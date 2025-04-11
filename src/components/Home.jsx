@@ -1,34 +1,24 @@
 import React from "react";
 import bgImage from "../assets/front-view-dye-liquid.jpg";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./Home.css";
 
 export default function Home() {
   return (
     <div
-      className="home-hero d-flex align-items-center justify-content-center text-center text-white"
+      className="min-h-screen w-full flex items-center justify-center bg-cover bg-center relative"
       style={{
         backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "100vh",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed", // optional parallax effect
       }}
     >
-      <div className="overlay" style={{
-        // backgroundColor: "rgba(0, 0, 0, 0.6)",
-        position: "absolute",
-        top: 0,
-        left: 0,
-        height: "100%",
-        width: "100%",
-        zIndex: 0,
-      }}></div>
+      {/* Overlay */}
+      {/* <div className="absolute inset-0 bg-black opacity-50 z-0"></div> */}
 
-      <div className="z-1" style={{ position: "relative" }}>
-        <h1 className="display-3 fw-bold mb-4" style={{color:'#6f42c1'}}>Inspire</h1>
-        <h2 className="display-5 fw-semibold mb-4" style={{color:'#6f42c1'}}>Ideate</h2>
-        <h1 className="display-3 fw-bold" style={{color:'#6f42c1'}}>Innovate</h1>
+      {/* Text Content */}
+      <div className="relative z-10 text-center text-white">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-purple-600">Inspire</h1>
+        <h2 className="text-4xl md:text-6xl font-semibold mb-6 text-purple-600">Ideate</h2>
+        <h1 className="text-5xl md:text-7xl font-bold text-purple-600">Innovate</h1>
       </div>
     </div>
   );

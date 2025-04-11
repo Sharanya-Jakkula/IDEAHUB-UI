@@ -1,66 +1,61 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import './Submit.css';
 import bgImage from "../assets/front-view-dye-liquid.jpg";
 
 export default function Submit() {
   return (
     <div
-      className="container-fluid d-flex justify-content-center align-items-center mt-4"
+      className="flex justify-center items-center min-h-screen px-4 pt-28 pb-16"
       style={{
-        backgroundImage: `url(${bgImage})`, // Replace with your image path
+        backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        minHeight: "100vh",
-        padding: "3rem 1rem"
       }}
     >
-      <div style={{ width: "100%", maxWidth: "600px" }}>
-        <h2 className="text-center mb-4" style={{ color: "#6f42c1" }}>
+      <div className="w-full max-w-2xl">
+        <h2 className="text-center text-3xl font-bold mb-6 text-purple-600">
           Submit Your Idea
         </h2>
-        <form
-          className="p-4 p-md-5 rounded shadow"
-          style={{
-            backgroundColor: "white",
-            border: "1px solid #ddd",
-          }}
-        >
+
+        <form className="bg-white rounded shadow p-6 border border-gray-200">
           {/* Idea Title */}
-          <div className="mb-3">
-            <label htmlFor="title" className="form-label text-purple">
+          <div className="mb-4">
+            <label htmlFor="title" className="block font-medium text-purple-700 mb-1">
               Idea Title
             </label>
             <input
               type="text"
-              className="form-control border-purple"
               id="title"
+              className="w-full px-3 py-2 border border-purple-300 rounded focus:outline-none focus:ring focus:ring-purple-200"
               placeholder="Enter a short title for your idea"
               required
             />
           </div>
 
           {/* Description */}
-          <div className="mb-3">
-            <label htmlFor="description" className="form-label text-purple">
+          <div className="mb-4">
+            <label htmlFor="description" className="block font-medium text-purple-700 mb-1">
               Description
             </label>
             <textarea
-              className="form-control border-purple"
               id="description"
               rows="4"
+              className="w-full px-3 py-2 border border-purple-300 rounded focus:outline-none focus:ring focus:ring-purple-200"
               placeholder="Describe your idea in detail"
               required
             ></textarea>
           </div>
 
           {/* Category */}
-          <div className="mb-3">
-            <label htmlFor="category" className="form-label text-purple">
+          <div className="mb-4">
+            <label htmlFor="category" className="block font-medium text-purple-700 mb-1">
               Category
             </label>
-            <select className="form-select border-purple" id="category" required>
+            <select
+              id="category"
+              className="w-full px-3 py-2 border border-purple-300 rounded focus:outline-none focus:ring focus:ring-purple-200"
+              required
+            >
               <option value="">Select a category</option>
               <option>Technology</option>
               <option>Education</option>
@@ -72,63 +67,62 @@ export default function Submit() {
           </div>
 
           {/* Tags */}
-          <div className="mb-3">
-            <label htmlFor="tags" className="form-label text-purple">
-              Tags <small>(comma separated)</small>
+          <div className="mb-4">
+            <label htmlFor="tags" className="block font-medium text-purple-700 mb-1">
+              Tags <small className="text-sm text-gray-500">(comma separated)</small>
             </label>
             <input
               type="text"
-              className="form-control border-purple"
               id="tags"
+              className="w-full px-3 py-2 border border-purple-300 rounded focus:outline-none focus:ring focus:ring-purple-200"
               placeholder="e.g., AI, Sustainability, Startups"
             />
           </div>
 
           {/* File Upload */}
-          <div className="mb-3">
-            <label htmlFor="attachment" className="form-label text-purple">
+          <div className="mb-4">
+            <label htmlFor="attachment" className="block font-medium text-purple-700 mb-1">
               Attach Supporting Files (optional)
             </label>
             <input
-              className="form-control border-purple"
               type="file"
               id="attachment"
+              className="w-full border border-purple-300 rounded px-3 py-2"
               accept=".pdf,.docx,.pptx,.png,.jpg"
             />
           </div>
 
-          {/* Link */}
-          <div className="mb-3">
-            <label htmlFor="link" className="form-label text-purple">
+          {/* Related Link */}
+          <div className="mb-4">
+            <label htmlFor="link" className="block font-medium text-purple-700 mb-1">
               Related Link (optional)
             </label>
             <input
               type="url"
-              className="form-control border-purple"
               id="link"
+              className="w-full px-3 py-2 border border-purple-300 rounded focus:outline-none focus:ring focus:ring-purple-200"
               placeholder="https://yourproject.com"
             />
           </div>
 
-          {/* Terms */}
-          <div className="form-check mb-4">
+          {/* Terms and Conditions */}
+          <div className="flex items-center mb-6">
             <input
-              className="form-check-input border-purple"
-              type="checkbox"
               id="terms"
+              type="checkbox"
               required
+              className="mr-2 border border-purple-300 rounded"
             />
-            <label className="form-check-label text-purple" htmlFor="terms">
-              I agree to the <a href="#">terms and conditions</a>.
+            <label htmlFor="terms" className="text-purple-700">
+              I agree to the <a href="#" className="no-underline">terms and conditions</a>.
             </label>
           </div>
 
-          {/* Submit */}
-          <div className="d-grid">
+          {/* Submit Button */}
+          <div>
             <button
               type="submit"
-              className="btn text-white"
-              style={{ backgroundColor: "#6f42c1" }}
+              className="w-full py-2 px-4 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
             >
               Submit Idea
             </button>

@@ -1,6 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-// import "./MyIdeas.css"; // Optional for extra styling
+import bgImage from "../assets/front-view-dye-liquid.jpg";
 
 export default function Explore() {
   const ideas = [
@@ -25,35 +24,51 @@ export default function Explore() {
   ];
 
   return (
-    <div className="container py-5 mt-4">
-      <h2 className="text-center mb-4" style={{ color: "#6f42c1" }}>
-     Explore new Ideas
-      </h2>
+    <div className="relative min-h-screen text-white text-center overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center z-[-1]"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      ></div>
 
-      {ideas.length === 0 ? (
-        <p className="text-center">You haven’t submitted any ideas yet.</p>
-      ) : (
-        <div className="row gy-4">
-          {ideas.map((idea, index) => (
-            <div key={index} className="col-12 col-md-6 col-lg-4">
-              <div className="card h-100 shadow-sm border-0">
-                <div className="card-body">
-                  <h5 className="card-title text-purple">{idea.title}</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">{idea.category}</h6>
-                  <p className="card-text">{idea.description}</p>
-                  <div className="mt-3">
-                    {idea.tags.map((tag, idx) => (
-                      <span key={idx} className="badge bg-secondary me-1">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+     
+      {/* Content */}
+      <div className="relative z-10 container mx-auto pt-24 pb-12 px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-purple-600">
+          Explore New Ideas
+        </h2>
+
+        {ideas.length === 0 ? (
+          <p className="text-center text-gray-200">
+            You haven’t submitted any ideas yet.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {ideas.map((idea, index) => (
+              <div
+                key={index}
+                className="bg-white bg-opacity-90 border border-purple-100 shadow-md rounded-lg p-6 hover:shadow-lg transition duration-200 text-left text-gray-800"
+              >
+                <h3 className="text-xl font-semibold text-purple-600 mb-1">
+                  {idea.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-3">{idea.category}</p>
+                <p className="mb-4">{idea.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {idea.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,94 +1,84 @@
 import React from "react";
 import bgImage from "../assets/front-view-dye-liquid.jpg";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
 
 export default function SignUp() {
   return (
     <div
-      className="login-hero d-flex align-items-center justify-content-center mt-4"
+      className="flex items-center justify-center min-h-screen pt-16 px-4 relative"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "100vh",
-        position: "relative",
       }}
     >
-      <div
-        className="overlay"
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          height: "100%",
-          width: "100%",
-          zIndex: 0,
-        }}
-      ></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black opacity-30 z-0"></div>
 
-      <div
-        className="z-1 w-100 px-3"
-        style={{
-          maxWidth: "400px",
-          position: "relative",
-        }}
-      >
-        <form className="login-form text-white p-4 p-md-5 rounded shadow">
-          <h3 className="text-center mb-4 text-purple">Sign Up</h3>
+      <div className="w-full max-w-sm z-10 relative">
+        <form className="bg-white bg-opacity-90 rounded-lg shadow-lg p-6 space-y-4">
+          <h3 className="text-2xl font-bold text-center text-purple-600">Sign Up</h3>
 
-          <div className="mb-3">
-            <label htmlFor="username" className="form-label text-purple">
+          {/* Username */}
+          <div>
+            <label htmlFor="username" className="block text-sm font-medium text-purple-700 mb-1">
               Username
             </label>
             <input
               type="text"
-              className="form-control"
               id="username"
               placeholder="Enter username"
+              className="w-full px-3 py-2 border border-purple-300 rounded focus:outline-none focus:ring focus:ring-purple-200"
             />
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label text-purple">
+          {/* Email */}
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-purple-700 mb-1">
               Email
             </label>
             <input
               type="email"
-              className="form-control"
               id="email"
               placeholder="Enter email"
+              className="w-full px-3 py-2 border border-purple-300 rounded focus:outline-none focus:ring focus:ring-purple-200"
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="password" className="form-label text-purple">
+          {/* Password */}
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-purple-700 mb-1">
               Password
             </label>
             <input
               type="password"
-              className="form-control"
               id="password"
               placeholder="Enter password"
+              className="w-full px-3 py-2 border border-purple-300 rounded focus:outline-none focus:ring focus:ring-purple-200"
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="password" className="form-label text-purple">
+
+          {/* Confirm Password */}
+          <div>
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-purple-700 mb-1">
               Confirm Password
             </label>
             <input
               type="password"
-              className="form-control"
-              id="password"
-              placeholder="Enter password"
+              id="confirmPassword"
+              placeholder="Confirm password"
+              className="w-full px-3 py-2 border border-purple-300 rounded focus:outline-none focus:ring focus:ring-purple-200"
             />
           </div>
 
-          <button type="submit" className="btn btn-purple w-100 mb-3">
-            SignUp
-          </button>
-       
+          {/* Submit */}
+          <div>
+            <button
+              type="submit"
+              className="w-full py-2 px-4 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+            >
+              Sign Up
+            </button>
+          </div>
         </form>
       </div>
     </div>

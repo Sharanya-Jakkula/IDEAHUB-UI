@@ -1,71 +1,57 @@
 import React from "react";
 import bgImage from "../assets/front-view-dye-liquid.jpg";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./Login.css";
 
 export default function Login() {
   return (
     <div
-      className="login-hero d-flex align-items-center justify-content-center mt-4"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "100vh",
-        position: "relative",
-      }}
+      className="flex items-center justify-center mt-4 h-screen bg-cover bg-center relative"
+      style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div
-        className="overlay"
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          height: "100%",
-          width: "100%",
-          zIndex: 0,
-        }}
-      ></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
 
-      <div
-        className="z-1 w-100 px-3"
-        style={{
-          maxWidth: "400px",
-          position: "relative",
-        }}
-      >
-        <form className="login-form text-white p-4 p-md-5 rounded shadow">
-          <h3 className="text-center mb-4 text-purple">Login</h3>
+      {/* Login Form */}
+      <div className="relative z-10 w-full max-w-sm px-4">
+        <form className="bg-white bg-opacity-90 text-purple p-6 rounded-lg shadow-lg">
+          <h3 className="text-center text-purple-600 text-2xl font-bold mb-6">Login</h3>
 
-          <div className="mb-3">
-            <label htmlFor="username" className="form-label text-purple">
+          <div className="mb-4">
+            <label htmlFor="username" className="block text-sm font-medium text-purple mb-1">
               Username
             </label>
             <input
               type="text"
-              className="form-control"
               id="username"
               placeholder="Enter username"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="password" className="form-label text-purple">
+            <label htmlFor="password" className="block text-sm font-medium text-purple mb-1">
               Password
             </label>
             <input
               type="password"
-              className="form-control"
               id="password"
               placeholder="Enter password"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
 
-          <button type="submit" className="btn btn-purple w-100 mb-3">
+          <button
+            type="submit"
+            className="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition"
+          >
             Login
           </button>
-        <p className="text-dark">Don't have an account?  <a href="/signUp" className="text-purple">SignUp</a></p>
+
+          <p className="text-center text-sm mt-4 text-gray-700">
+            Don't have an account?{" "}
+            <a href="/signUp" className="text-purple-600 hover:underline">
+              SignUp
+            </a>
+          </p>
         </form>
       </div>
     </div>
