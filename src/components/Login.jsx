@@ -5,10 +5,7 @@ export default function Login() {
   return (
     <div
       className="flex items-center justify-center mt-4 h-screen bg-cover bg-center relative"
-      style={{ backgroundImage: `url(${bgImage})` }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
 
       {/* Login Form */}
       <div className="relative z-10 w-full max-w-sm px-4">

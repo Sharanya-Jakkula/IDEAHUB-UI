@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
-import Submit from './components/Submit';
+import Propose from './components/Propose';
 import Myideas from './components/Myideas';
 import Explore from './components/Explore';
 import SignUp from "./components/SignUp";
@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Body />} >
           <Route index element={<Home/>}/>
           <Route path="login" element={<Login />} />
-          <Route path="propose" element={<Submit />} />
+          <Route path="propose" element={<Propose />} />
           <Route path="myideas" element={<Myideas />} />
           <Route path="explore" element={<Explore />} />
           <Route path="signup" element={<SignUp />} />

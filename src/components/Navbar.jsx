@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="fixed w-full bg-gradient-to-b from-black/20 to-transparent backdrop-blur-md px-10 py-4 z-50">
+    <nav className="fixed  top-0 left-0 w-full bg-gradient-to-b from-black/20 to-transparent backdrop-blur-md px-10 py-4 z-50">
       <div className="flex flex-wrap items-center justify-between">
         {/* Brand */}
         <Link className="text-[#7F00FF]/70 font-bold text-3xl no-underline" to="/">
