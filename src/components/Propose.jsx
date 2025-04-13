@@ -1,16 +1,10 @@
 import React from "react";
 import bgImage from "../assets/front-view-dye-liquid.jpg";
 
-export default function Submit() {
+export default function Propose() {
   return (
     <div
       className="flex justify-center items-center min-h-screen px-4 pt-28 pb-16"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
     >
       <div className="w-full max-w-2xl">
         <h2 className="text-center text-3xl font-bold mb-6 text-purple-600">

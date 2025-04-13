@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="w-full fixed top-0 z-50 bg-white shadow-sm px-4">
+    <nav className="fixed  top-0 left-0 w-full bg-gradient-to-b from-black/20 to-transparent backdrop-blur-md px-10 py-4 z-50">
       <div className="flex flex-wrap items-center justify-between">
         {/* Brand */}
-        <Link className="text-purple-600 font-bold text-2xl no-underline" to="/">
+        <Link className="text-[#7F00FF]/70 font-bold text-3xl no-underline" to="/">
           Idea Hub <span>!</span>
         </Link>
 
@@ -35,39 +35,27 @@ export default function Navbar() {
 
         {/* Nav Links */}
         <div className="hidden w-full lg:flex lg:items-center lg:w-auto" id="navbarNav">
-          <ul className="flex flex-col lg:flex-row lg:items-center lg:space-x-6 mt-4 lg:mt-0 text-lg font-medium">
             {[
               { name: "Home", path: "/" },
               { name: "Explore", path: "/explore" },
-              { name: "Submit", path: "/submit" },
+              { name: "Propose", path: "/propose" },
               { name: "My Ideas", path: "/myIdeas" },
             ].map((item, index) => (
-              <li key={index}>
                 <Link
                   to={item.path}
-                  className="text-purple-600 no-underline px-4 py-2 rounded-md hover:bg-purple-100 transition duration-200"
+                  className="text-[#7F00FF]/60 no-underline px-4 py-2 rounded-md hover:text-[#7F00FF]/100 transition duration-200 text-xl"
                 >
                   {item.name}
                 </Link>
-              </li>
             ))}
-            <li>
-              <Link
-                to="/login"
-                className="text-white bg-purple-600 no-underline hover:bg-purple-700 px-4 py-2 rounded-md transition duration-200"
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard"
-                className="text-white bg-purple-600 no-underline hover:bg-purple-700 px-4 py-2 rounded-md transition duration-200"
-              >
-                Dashboard
-              </Link>
-            </li>
-          </ul>
+        </div>
+        <div>
+           <Link
+              to="/login"
+              className="text-xl no-underline font-medium text-white bg-[#7F00FF]/70 py-3 px-4 rounded-xl cursor-pointer hover:bg-[#6B47C6]"
+            >
+              Log In
+            </Link>
         </div>
       </div>
     </nav>

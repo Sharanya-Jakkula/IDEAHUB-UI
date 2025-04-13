@@ -5,14 +5,7 @@ export default function SignUp() {
   return (
     <div
       className="flex items-center justify-center min-h-screen pt-16 px-4 relative"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-30 z-0"></div>
 
       <div className="w-full max-w-sm z-10 relative">
         <form className="bg-white bg-opacity-90 rounded-lg shadow-lg p-6 space-y-4">
