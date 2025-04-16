@@ -1,14 +1,13 @@
 import React from "react";
-import bgImage from "../assets/front-view-dye-liquid.jpg";
 
 export default function Propose() {
   return (
     <div
-      className="flex justify-center items-center min-h-screen px-4 pt-28 pb-16"
+      className="flex justify-center items-center px-4"
     >
       <div className="w-full max-w-2xl">
         <h2 className="text-center text-3xl font-bold mb-6 text-purple-600">
-          Submit Your Idea
+          Propse Your Idea
         </h2>
 
         <form className="bg-white rounded shadow p-6 border border-gray-200">

@@ -1,16 +1,16 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
-// import { Footer } from "antd/es/layout/layout";
+import Footer from "./Footer";
 
 export default function Body(){
     return(
-        <div>
+        <div className="flex flex-col min-h-screen">
             <Navbar/>
-            <div>
+            <div className="flex-grow mt-[120px]">
                 <Outlet/>
             </div>
-            {/* <Footer/> */}
+            <Footer/>
         </div>
     );
 }

@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
 import Propose from './components/Propose';
-import Myideas from './components/Myideas';
+import MyIdeas from './components/MyIdeas';
 import Explore from './components/Explore';
 import SignUp from "./components/SignUp";
 
@@ -20,7 +20,7 @@ function App() {
           <Route index element={<Home/>}/>
           <Route path="login" element={<Login />} />
           <Route path="propose" element={<Propose />} />
-          <Route path="myideas" element={<Myideas />} />
+          <Route path="myideas" element={<MyIdeas />} />
           <Route path="explore" element={<Explore />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="dashboard" element={<Dashboard/>} />

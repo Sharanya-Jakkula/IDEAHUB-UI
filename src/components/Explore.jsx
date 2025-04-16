@@ -1,5 +1,4 @@
 import React from "react";
-import bgImage from "../assets/front-view-dye-liquid.jpg";
 
 export default function Explore() {
   const ideas = [
@@ -24,15 +23,10 @@ export default function Explore() {
   ];
 
   return (
-    <div className="relative min-h-screen text-white text-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center z-[-1]"
-      ></div>
+    <div className="relative text-white text-center overflow-hidden">
 
-     
       {/* Content */}
-      <div className="relative z-10 container mx-auto pt-24 pb-12 px-4">
+      <div className="relative z-10 container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-purple-600">
           Explore New Ideas
         </h2>
