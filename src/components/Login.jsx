@@ -1,10 +1,9 @@
 import React from "react";
-import bgImage from "../assets/front-view-dye-liquid.jpg";
 
 export default function Login() {
   return (
     <div
-      className="flex items-center justify-center mt-4 h-screen bg-cover bg-center relative"
+      className="flex items-center justify-center mt-4 bg-cover bg-center relative"
     >
 
       {/* Login Form */}

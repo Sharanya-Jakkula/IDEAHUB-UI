@@ -1,10 +1,9 @@
 import React from "react";
-import bgImage from "../assets/front-view-dye-liquid.jpg";
 
 export default function SignUp() {
   return (
     <div
-      className="flex items-center justify-center min-h-screen pt-16 px-4 relative"
+      className="flex items-center justify-center px-4 relative"
     >
 
       <div className="w-full max-w-sm z-10 relative">

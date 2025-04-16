@@ -34,7 +34,7 @@ export default function Navbar() {
         </button>
 
         {/* Nav Links */}
-        <div className="hidden w-full lg:flex lg:items-center lg:w-auto" id="navbarNav">
+        <div className="hidden w-full lg:flex lg:items-center py-2 px-16 lg:w-auto shadow-lg px-30 rounded-[40px] gap-4 w-[750px]">
             {[
               { name: "Home", path: "/" },
               { name: "Explore", path: "/explore" },
@@ -43,7 +43,7 @@ export default function Navbar() {
             ].map((item, index) => (
                 <Link
                   to={item.path}
-                  className="text-[#7F00FF]/60 no-underline px-4 py-2 rounded-md hover:text-[#7F00FF]/100 transition duration-200 text-xl"
+                  className="text-[#7F00FF]/60 no-underline px-4 py-2 rounded-md hover:text-[#7F00FF]/100 transition duration-200 text-xl font-medium"
                 >
                   {item.name}
                 </Link>
