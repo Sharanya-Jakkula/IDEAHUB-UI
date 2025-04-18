@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { LogIn, LogOut, Settings, User, Menu, UserCircle } from "lucide-react";
+import { LogIn, LogOut, Settings, User, Menu, UserCircle, X } from "lucide-react";
 
 export default function Navbar() {
   const [isAuthenticated,setIsAuthenticated] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const profileRef = useRef(null);
   useEffect(()=>{
     const interval = setInterval(() => {
@@ -13,7 +14,7 @@ export default function Navbar() {
       if(!token){
         setProfileOpen(false);
       }
-    }, 1000); // runs every 1000 milliseconds (1 second)
+    }, 500); // runs every 1000 milliseconds (1 second)
   
     // Cleanup interval on unmount
     return () => clearInterval(interval);
@@ -45,27 +46,9 @@ export default function Navbar() {
           Idea Hub <span>!</span>
         </Link>
 
-        {/* Hamburger Button */}
-        <button
-          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-          type="button"
-          data-collapse-toggle="navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <svg
-            className="w-6 h-6"
-            aria-hidden="true"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              fillRule="evenodd"
-              d="M3 5h14a1 1 0 000-2H3a1 1 0 000 2zm14 4H3a1 1 0 100 2h14a1 1 0 100-2zm0 6H3a1 1 0 100 2h14a1 1 0 100-2z"
-              clipRule="evenodd"
-            />
-          </svg>
+        {/* Mobile Menu Button */}
+        <button className="md:hidden ml-16" onClick={() => setMenuOpen(!menuOpen)}>
+            { menuOpen ? <X className="w-6 h-6 text-purple-700"/> : <Menu className="w-6 h-6 text-black" /> }
         </button>
 
         {/* Nav Links */}
@@ -84,7 +67,7 @@ export default function Navbar() {
                 </Link>
             ))}
         </div>
-        <div>
+        <div className="hidden md:inline-block">
           {isAuthenticated ? (
             // If user is logged in, show Profile & Logout
             <div className="relative" ref={profileRef}>
@@ -92,7 +75,7 @@ export default function Navbar() {
                 className="flex items-center space-x-2 text-gray-600 hover:text-red-700"
                 onClick={() => setProfileOpen(!profileOpen)}
               >
-                <UserCircle className="w-10 h-10 text-purple-500" />
+                <UserCircle className="w-10 h-10 text-purple-500 ml-16" />
               </button>
 
               {profileOpen && (
@@ -113,12 +96,30 @@ export default function Navbar() {
             </div>
           ) : (
             // If user is not logged in, show Login button
-            <Link to="/login" className="no-underline flex items-center gap-2 bg-[#7F00FF]/70 text-white font-medium text-xl px-4 py-2 rounded-lg font-semibold hover:bg-gray-200 transition">
-              <LogIn className="w-5 h-5 font-bold" /> Login
+            <Link to="/login" className="no-underline flex items-center gap-1  bg-[#7F00FF]/70 text-white font-medium text-xl px-4 py-2 rounded-lg font-semibold hover:bg-gray-200 transition">
+              <LogIn className="w-4 h-4 font-bold" /> Login
             </Link>
           )}
+
         </div>
       </div>
+
+      {/* Mobile Navigation (Shown when menuOpen is true) */}
+      {menuOpen && (
+          <div className="absolute top-16 left-0 w-full bg-white shadow-md flex flex-col items-center py-4 md:hidden z-50">
+            <Link to="/" className="no-underline py-2 text-[#03045E] hover:bg-gray-200 w-full text-center">Home</Link>
+            <Link to="/explore" className="py-2 no-underline  text-[#03045E] hover:bg-gray-200 w-full text-center">Explore</Link>
+            <Link to="/propose" className="py-2 no-underline text-[#03045E] hover:bg-gray-200 w-full text-center">Propose</Link>
+            <Link to="/myIdeas" className="py-2 no-underline text-[#03045E] hover:bg-gray-200 w-full text-center">My Ideas</Link>
+            <Link to="/profile" className="py-2 no-underline text-[#03045E] hover:bg-gray-200 w-full text-center">Profile</Link>
+            {isAuthenticated ? (
+              <button className="py-2 text-[#03045E] hover:bg-gray-200 w-full text-center" onClick={handleLogout}>Logout</button>
+            ) : (
+              <Link to="/login" className="py-2 text-[#03045E] hover:bg-gray-200 w-full text-center">Login</Link>
+            )}
+          </div>
+        )}
+
     </nav>
   );
 }
