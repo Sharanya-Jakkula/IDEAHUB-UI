@@ -3,6 +3,7 @@ import axios from "axios"
 import {motion} from "framer-motion"
 import toast from "react-hot-toast"
 import { useNavigate } from "react-router-dom";
+import  Cookies  from "js-cookie";
 export default function Login() {
   
   const [formData, setFormData] = useState({email:"", password:""});
@@ -33,11 +34,12 @@ export default function Login() {
       });
 
       console.log(response);
-      if(!response){
-        toast.success("Logged In Successful!", {duration:3000});
+      if(response.data){
+        toast.success("Logged In Successful!", {position:"bottom-right",duration:3000});
       }
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", response.data.user);
+      Cookies.set("jwt",response.data.token);
       navigate("/explore");
 
     }catch (err) {

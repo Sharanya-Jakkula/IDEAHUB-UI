@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LogIn, LogOut, Settings, User, Menu, UserCircle, X } from "lucide-react";
-
+import Cookies from "js-cookie";
 export default function Navbar() {
   const [isAuthenticated,setIsAuthenticated] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const profileRef = useRef(null);
+  const navigate = useNavigate();
+
   useEffect(()=>{
     const interval = setInterval(() => {
       const token = localStorage.getItem("token");
@@ -21,6 +23,9 @@ export default function Navbar() {
   },[]);
 
   const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    Cookies.remove("token");
     setIsAuthenticated(false);
     setProfileOpen(false); // Close profile dropdown on logout
     navigate("/login"); // Redirect to login page
@@ -61,7 +66,7 @@ export default function Navbar() {
             ].map((item, index) => (
                 <Link
                   to={item.path}
-                  className="text-[#7F00FF]/60 no-underline px-4 py-2 rounded-md hover:text-[#7F00FF]/100 transition duration-200 text-xl font-medium"
+                  className="text-black no-underline px-4 py-2 rounded-md hover:text-[#7F00FF]/100 transition duration-200 text-xl font-medium"
                 >
                   {item.name}
                 </Link>
@@ -96,7 +101,7 @@ export default function Navbar() {
             </div>
           ) : (
             // If user is not logged in, show Login button
-            <Link to="/login" className="no-underline flex items-center gap-1  bg-[#7F00FF]/70 text-white font-medium text-xl px-4 py-2 rounded-lg font-semibold hover:bg-gray-200 transition">
+            <Link to="/login" className="no-underline flex items-center gap-1  bg-[#7F00FF]/70 text-white font-medium text-xl px-4 py-2 rounded-lg font-semibold hover:bg-purple-700 transition">
               <LogIn className="w-4 h-4 font-bold" /> Login
             </Link>
           )}

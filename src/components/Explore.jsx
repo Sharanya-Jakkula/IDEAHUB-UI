@@ -1,26 +1,54 @@
-import React from "react";
+import axios from "axios";
+import React, { useState , useEffect, useRef} from "react";
+import toast from "react-hot-toast";
 
 export default function Explore() {
-  const ideas = [
-    {
-      title: "AI-Powered Health Assistant",
-      description: "An AI tool to monitor patient vitals and suggest actions.",
-      category: "Healthcare",
-      tags: ["AI", "Health", "RemoteMonitoring"],
-    },
-    {
-      title: "Eco-Friendly Packaging",
-      description: "Developing biodegradable packaging for online deliveries.",
-      category: "Environment",
-      tags: ["Sustainability", "Packaging"],
-    },
-    {
-      title: "Smart Classroom",
-      description: "IoT-based system to manage classroom attendance and energy.",
-      category: "Education",
-      tags: ["IoT", "Classroom", "Automation"],
-    },
-  ];
+  const API_URL = "http://localhost:8080"
+  const [ideas, setIdeas] = useState([]);
+  const isMounted = useRef(false); // To prevent initial render issues
+  const fetchIdeas = async ()=>{
+
+    try{
+      const response = await axios.get(`${API_URL}/api/idea`,{
+        withCredentials:true,
+      });
+      if(response.data){
+        setIdeas(response.data);
+      }
+    }catch(err){
+      console.log(err);
+      setIdeas([
+        {
+          title: "AI-Powered Health Assistant",
+          description: "An AI tool to monitor patient vitals and suggest actions.",
+          category: "Healthcare",
+          tags: ["AI", "Health", "RemoteMonitoring"],
+        },
+        {
+          title: "Eco-Friendly Packaging",
+          description: "Developing biodegradable packaging for online deliveries.",
+          category: "Environment",
+          tags: ["Sustainability", "Packaging"],
+        },
+        {
+          title: "Smart Classroom",
+          description: "IoT-based system to manage classroom attendance and energy.",
+          category: "Education",
+          tags: ["IoT", "Classroom", "Automation"],
+        },
+      ]);
+    }
+  }
+
+  useEffect(()=>{
+    if(!isMounted.current){
+      // Prevent running on the initial render
+      isMounted.current = true;
+      fetchIdeas(); // Fetch data immediately on mount
+    }
+    const interval = setInterval(fetchIdeas,2000);
+    return () => clearInterval(interval);
+  },[]);
 
   return (
     <div className="relative text-white text-center overflow-hidden">
@@ -45,9 +73,9 @@ export default function Explore() {
                 <h3 className="text-xl font-semibold text-purple-600 mb-1">
                   {idea.title}
                 </h3>
-                <p className="text-sm text-gray-600 mb-3">{idea.category}</p>
+                <p className="text-sm text-gray-600 mb-3">category</p>
                 <p className="mb-4">{idea.description}</p>
-                <div className="flex flex-wrap gap-2">
+                {/* <div className="flex flex-wrap gap-2">
                   {idea.tags.map((tag, idx) => (
                     <span
                       key={idx}
@@ -56,7 +84,7 @@ export default function Explore() {
                       #{tag}
                     </span>
                   ))}
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
