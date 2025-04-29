@@ -33,12 +33,19 @@ export default function Login() {
         withCredentials: true,
       });
 
-      console.log(response);
+      console.log(response.data);
+      if(!response.data.token){
+        setError("Something went wrong");
+        toast.error("Error has occured!", {position:"top-right",duration:3000});
+        console.log("Error occured");
+        return;
+      }
       if(response.data){
         toast.success("Logged In Successful!", {position:"bottom-right",duration:3000});
       }
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", response.data.user);
+      localStorage.setItem("user", JSON.stringify( response.data.user ));
+      localStorage.setItem("id",response.data.id);
       Cookies.set("jwt",response.data.token);
       navigate("/explore");
 
@@ -88,7 +95,7 @@ export default function Login() {
               required
             />
           </div>
-
+          <p>{error}</p>
           <motion.button
             type="submit"
             className="w-full bg-[#7F56D9] hover:bg-[#a17df0] text-white py-3 rounded-lg font-semibold transition-all disabled:opacity-50"
