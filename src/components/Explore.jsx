@@ -1,45 +1,79 @@
-import React from "react";
-import bgImage from "../assets/front-view-dye-liquid.jpg";
+import axios from "axios";
+import React, { useState , useEffect, useRef} from "react";
+import toast from "react-hot-toast";
 
 export default function Explore() {
-  const ideas = [
-    {
-      title: "AI-Powered Health Assistant",
-      description: "An AI tool to monitor patient vitals and suggest actions.",
-      category: "Healthcare",
-      tags: ["AI", "Health", "RemoteMonitoring"],
-    },
-    {
-      title: "Eco-Friendly Packaging",
-      description: "Developing biodegradable packaging for online deliveries.",
-      category: "Environment",
-      tags: ["Sustainability", "Packaging"],
-    },
-    {
-      title: "Smart Classroom",
-      description: "IoT-based system to manage classroom attendance and energy.",
-      category: "Education",
-      tags: ["IoT", "Classroom", "Automation"],
-    },
-  ];
+  const API_URL = "http://localhost:8080"
+  const [ideas, setIdeas] = useState([]);
+  const isMounted = useRef(false); // To prevent initial render issues
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [id, setId] = useState(0);
+  const fetchIdeas = async (userId)=>{
+
+    try{
+      console.log("started");
+      const response = await axios.get(`${API_URL}/api/idea`,{
+        withCredentials:true,
+      });
+      console.log("done");
+      if(response.data){ 
+        console.log(id);
+        console.log(response.data[0].createdBy);
+        const filteredIdeas = response.data.filter(idea => idea.createdBy !== userId);
+        setIdeas(filteredIdeas);
+        console.log(filteredIdeas);
+        toast.success("Fetched successfully!", {position:"top-right", duration:2000});
+      }
+    }catch(err){
+      console.log(err);
+      // setIdeas([
+      //   {
+      //     title: "AI-Powered Health Assistant",
+      //     description: "An AI tool to monitor patient vitals and suggest actions.",
+      //     category: "Healthcare",
+      //     tags: ["AI", "Health", "RemoteMonitoring"],
+      //   },
+      //   {
+      //     title: "Eco-Friendly Packaging",
+      //     description: "Developing biodegradable packaging for online deliveries.",
+      //     category: "Environment",
+      //     tags: ["Sustainability", "Packaging"],
+      //   },
+      //   {
+      //     title: "Smart Classroom",
+      //     description: "IoT-based system to manage classroom attendance and energy.",
+      //     category: "Education",
+      //     tags: ["IoT", "Classroom", "Automation"],
+      //   },
+      // ]);
+    }finally{
+      setLoading(false);
+    }
+  }
+
+  useEffect(()=>{
+    const storedId = parseInt(localStorage.getItem("id"), 10);
+  setId(storedId);
+  fetchIdeas(storedId);
+    // const interval = setInterval(fetchIdeas,1000);
+    // return () => clearInterval(interval);
+  },[]);
 
   return (
-    <div className="relative min-h-screen text-white text-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center z-[-1]"
-      ></div>
+    <div className="relative text-white text-center overflow-hidden">
 
-     
       {/* Content */}
-      <div className="relative z-10 container mx-auto pt-24 pb-12 px-4">
+      <div className="relative z-10 container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-purple-600">
           Explore New Ideas
         </h2>
 
-        {ideas.length === 0 ? (
-          <p className="text-center text-gray-200">
-            You haven’t submitted any ideas yet.
+        {loading ? (
+          <p className="text-center text-gray-500">Loading...</p>
+        ) : ideas.length === 0 ? (
+          <p className="text-center text-gray-800">
+            There are no ideas registered yet.
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -52,8 +86,18 @@ export default function Explore() {
                   {idea.title}
                 </h3>
                 <p className="text-sm text-gray-600 mb-3">{idea.category}</p>
+
+                {/* Display image if present */}
+                {idea.image && (
+                  <img
+                    src={idea.image}
+                    alt={idea.title}
+                    className="w-full h-68 object-cover rounded-md mb-4"
+                  />
+                )}
+
                 <p className="mb-4">{idea.description}</p>
-                <div className="flex flex-wrap gap-2">
+                {/* <div className="flex flex-wrap gap-2">
                   {idea.tags.map((tag, idx) => (
                     <span
                       key={idx}
@@ -62,7 +106,7 @@ export default function Explore() {
                       #{tag}
                     </span>
                   ))}
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
